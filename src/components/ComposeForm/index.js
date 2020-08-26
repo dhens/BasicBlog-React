@@ -42,9 +42,6 @@ const ComposeForm = () => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data)
-                // We assume that state contains all the data we need,
-                // creating a new data object would be redundant as it would
-                // contain the same data held in the state object
             })
             .then(res => res.json())
             .then(data => {
