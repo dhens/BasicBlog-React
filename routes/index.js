@@ -4,6 +4,8 @@ router.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-router.post('/api/new-post', (req, res) => {
-    res.send('Post Received!');
+router.post('/api/postblog', (req, res) => {
+    res.json(JSON.stringify(req.body))
 })
+
+module.exports = router;
