@@ -33,7 +33,7 @@ const ComposeForm = () => {
             body: state.body,
             username: state.username
         }
-        console.log(data)
+        console.log(`Dasta submitted: ${data}`);
         event.preventDefault();
         fetch(
             `http://localhost:8080/api/postblog`, {

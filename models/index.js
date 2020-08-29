@@ -1,18 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const basicUserSchema = new Schema({
+const blogUserSchema = new Schema({
     username: {
         type: String,
         required: true,
         unique: true,
         maxlength: 16
     },
-    posts: {
-        id: {
-            type: Number,
-            required: true
-        },
+    posts: [{
         title: {
             type: String,
             required: true,
@@ -23,15 +19,15 @@ const basicUserSchema = new Schema({
             required: true,
             maxlength: 480
         },
-        author: {
+        username: {
             type: String,
             required: true,
             unique: true,
             maxlength: 16    
         }
-    }
+    }]
 });
 
-const basicUser = mongoose.model('basicUser', basicUserSchema);
+const blogUser = mongoose.model('basicUser', blogUserSchema);
 
-module.exports = basicUser;
+module.exports = blogUser;

@@ -4,12 +4,15 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const API_PORT = process.env.API_PORT || 8080;
+const userController = require('./controller');
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Load CORS policy, as well as backend routes
+const whitelist = ['http://localhost:8080', 'http://localhost:3000']
+
+// Load CORS policy
 app.use(cors({
   origin: function(origin, callback){
     // allow requests with no origin 
@@ -23,26 +26,14 @@ app.use(cors({
   }
 }));
 
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("./build"));
-    mongoose.connect(process.env.MONGODB_URI, {       // Use mongodb v4 connection settings
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true
-    });
-  
-  } else {
-    mongoose.connect(process.env.MONGODB_URI, {     // Connect to the Mongo DB locally
-      useNewUrlParser: true,                        // Use mongodb v4 connection settings
-      useUnifiedTopology: true,
-      useCreateIndex: true
-    });
-    console.log('Connected to mongo!')
-  }
+mongoose.connect(process.env.MONGODB_URI, {     // Connect to the Mongo DB locally
+  useNewUrlParser: true,                        // Use mongodb v4 connection settings
+  useUnifiedTopology: true,
+  useCreateIndex: true
+});
 
   app.post('/api/postblog', (req, res) => {
-    // userController.publishPost(req.body);
+    userController.publishPost(req.body);
     res.send(req.body)
 })
 
