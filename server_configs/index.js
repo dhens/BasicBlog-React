@@ -15,4 +15,4 @@ cors({
     }
   });
 
-module.exports = cors
+module.exports = cors;
