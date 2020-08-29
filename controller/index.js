@@ -15,7 +15,7 @@ module.exports = {
                 if (currentUser) {
                     blogUser.updateOne(
                         { username: req.username },     // find the entity that matches the existing username
-                        { $push: {posts: req }})        // arr.push the new post into the existing posts data
+                        { $push: {posts: req }})        // arr.push the new post into the existing posts array for that user
                         .then(postSuccess =>
                             console.log(`New blog post from user ${req.username} at ${dateTime}: ${JSON.stringify(postSuccess)}`)
                         )

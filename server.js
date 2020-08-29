@@ -38,7 +38,7 @@ mongoose.connect(process.env.MONGODB_URI, {     // Connect to the Mongo DB local
 })
 
   app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('/ Route hit!');
 });
 
 app.listen(API_PORT, () => {

@@ -1,15 +1,17 @@
 import React from 'react';
 import './App.css';
-import ComposePostWrapper from './components/ComposeForm';
-import ComposeForm from './components/ComposeForm';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Profile from'../src/pages/Profile';
+import Home from '../src/pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <ComposePostWrapper>
-        <ComposeForm/>
-      </ComposePostWrapper>
-    </div>
+    <Router>
+      <div className="App">
+        <Route path="/" exact component={Home} />
+        <Route path="/profile" component={Profile} />
+      </div>
+    </Router>
   );
 } 
 
