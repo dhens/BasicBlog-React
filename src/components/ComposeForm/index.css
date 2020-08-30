@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    margin-left: 10%;
+    margin-right: 50%;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 80px;
+    grid-template-rows: auto auto auto auto auto;
+    padding: 0;
+}

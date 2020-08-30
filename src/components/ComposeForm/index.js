@@ -3,8 +3,8 @@ import './index.css';
 
 const ComposeForm = () => {
 
-    // Declare the two values of state to be tracked:
-    // the title of the post and the body / content of the post
+    // Declare the 3 values of state to be tracked:
+    // the title of the post, the body / content of the post, and the user posting it
     const [state, setState] = useState({
         title: '',
         body: '',
@@ -23,10 +23,10 @@ const ComposeForm = () => {
         setState({
             ...state,
             [event.target.name]: submittedFormValue
-                   // Ex: title: 'Why Plants are Living Beings'
+            // Ex: title: 'Why Plants are Living Beings'
         });
     }
-    
+
     // Send blog post data to backend for processing
     const handleSubmit = event => {
         const data = {
@@ -34,19 +34,19 @@ const ComposeForm = () => {
             body: state.body,
             username: state.username
         }
-        console.log(`Dasta submitted: ${data}`);
+        console.log(`Dasta submitted: ${JSON.stringify(data)}`);
         event.preventDefault();
         fetch(
             `http://localhost:8080/api/postblog`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
             .then(res => res.json())
             .then(data => {
-                console.log(`Success: ${data}`);
+                console.log(`Server accepted submitted data!`);
             })
             .catch((error) => {
                 console.log(`Error: ${error}`)
@@ -54,21 +54,23 @@ const ComposeForm = () => {
     }
 
     return (
-        <form>
-            <label>
-                Title
-                <input onChange={handleChange} value={state.title} type="text" name="title"/>
-            </label>
-            <label>
-                Body
-                <textarea onChange={handleChange} value={state.body} name="body"/>
-            </label>
-            <label>
-                Username
-                <textarea onChange={handleChange} value={state.username} name="username"/>
-            </label>
-            <input onClick={handleSubmit} type="submit" name="submit" value="Submit"/>
-        </form>
+        <div className="container">
+            <form>
+                <label>
+                    Title
+                <input onChange={handleChange} value={state.title} type="text" name="title" required minLength="1" maxLength="48" />
+                </label>
+                <label>
+                    Body
+                <textarea onChange={handleChange} value={state.body} name="body" required />
+                </label>
+                <label>
+                    Username
+                <textarea onChange={handleChange} value={state.username} name="username" required />
+                </label>
+                <input onClick={handleSubmit} type="submit" name="submit" value="Submit" />
+            </form>
+        </div>
     )
 }
 
