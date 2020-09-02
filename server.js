@@ -37,7 +37,9 @@ mongoose.connect(process.env.MONGODB_URI, {     // Connect to the Mongo DB local
     res.send(req.body)
 })
 
-app.get('/api/getUserPostHistory', (req, res) => {})
+app.get('/api/getUserPostHistory/:id', (req, res) => {
+  
+})
 
   app.get('/', (req, res) => {
     res.send('/ Route hit!');

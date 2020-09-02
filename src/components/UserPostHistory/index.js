@@ -5,7 +5,7 @@ const UserPostHistory = () => {
     const [userPosts, setUserPosts] = useState({});
 
     const getUserPostHistory = (username) => {
-        axios.get('localhost:8080/api/getUserPost')
+        axios.get('localhost:8080/api/getUserPost/:id')
             .then(res => {
                 console.log(res)
             })
