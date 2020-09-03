@@ -4,7 +4,8 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const API_PORT = process.env.API_PORT || 8080;
-const userController = require('./controller');
+const postController = require('./controller');
+const userQueryController = require('./controller/api');
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -33,12 +34,19 @@ mongoose.connect(process.env.MONGODB_URI, {     // Connect to the Mongo DB local
 });
 
   app.post('/api/postblog', (req, res) => {
-    userController.publishPost(req.body);
+    postController.publishPost(req.body);
     res.send(req.body)
 })
 
-app.get('/api/getUserPostHistory/:id', (req, res) => {
-  
+app.get('/api/getUserPostHistory/:username', (req, res) => {
+  const callback = (status, message) => {
+    res.status = status
+    res.send(message);
+  }
+  userQueryController
+    .grabPostHistory(
+      req.params.username, callback
+      )
 })
 
   app.get('/', (req, res) => {
