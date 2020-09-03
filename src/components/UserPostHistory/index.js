@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './index.css';
 
 const UserPostHistory = () => {
     // Declare the 3 values of state to be tracked:
@@ -29,13 +30,16 @@ const UserPostHistory = () => {
         axios.get(`http://localhost:8080/api/getUserPostHistory/${state.username}`)
             .then(res => {
                 console.log(res)
+                setState({
+                    ...state,
+                    [state.searchedUserResults]: res.data
+                });
             })
             .catch(err => console.log(err));
     }
 
     return (
         <div>
-            <h2>User Post History:</h2>
             <form>
                 <input type="text" onChange={handleChange} value={state.username} name="username" maxLength="16" required></input>
                 <input type="submit" onClick={handleSubmit}/>
