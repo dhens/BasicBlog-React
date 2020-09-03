@@ -7,7 +7,7 @@ const UserPostHistory = () => {
     // the title of the post, the body / content of the post, and the user posting it
     const [state, setState] = useState({
         username: '',
-        searchedUserResults: {}
+        searchedUserResults: []
     });
 
     // When our input form's value changes due to 
@@ -29,10 +29,8 @@ const UserPostHistory = () => {
         event.preventDefault();
         axios.get(`http://localhost:8080/api/getUserPostHistory/${state.username}`)
             .then(res => {
-                console.log(res)
                 setState({
-                    ...state,
-                    [state.searchedUserResults]: res.data
+                    searchedUserResults: res.data.posts
                 });
             })
             .catch(err => console.log(err));
@@ -42,7 +40,21 @@ const UserPostHistory = () => {
         <div>
             <form>
                 <input type="text" onChange={handleChange} value={state.username} name="username" maxLength="16" required></input>
-                <input type="submit" onClick={handleSubmit}/>
+                <input type="submit" onClick={handleSubmit} />
+                {state.searchedUserResults.map((post, index) => (
+                    <ul key={index} className="search-results">
+                        <li>
+                            <h4>{post.title}</h4>
+                        </li>
+                        <li>
+                            <h5>{post.body}</h5>
+                        </li>
+                        <li>
+                            <h6>Author: {post.username}</h6>
+                        </li>
+                    </ul>
+
+                ))}
             </form>
         </div>
     )
