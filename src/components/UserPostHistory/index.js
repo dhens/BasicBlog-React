@@ -5,7 +5,7 @@ const UserPostHistory = () => {
     // Declare the 3 values of state to be tracked:
     // the title of the post, the body / content of the post, and the user posting it
     const [state, setState] = useState({
-        searchedUsername: '',
+        username: '',
         searchedUserResults: {}
     });
 
@@ -24,8 +24,9 @@ const UserPostHistory = () => {
         });
     }
 
-    const handleSubmit = () => {
-        axios.get(`localhost:8080/api/getUserPostHistory/${state.searchedUsername}`)
+    const handleSubmit = event => {
+        event.preventDefault();
+        axios.get(`http://localhost:8080/api/getUserPostHistory/${state.username}`)
             .then(res => {
                 console.log(res)
             })
@@ -36,8 +37,8 @@ const UserPostHistory = () => {
         <div>
             <h2>User Post History:</h2>
             <form>
-                <input type="text" onChange={handleChange} value={state.searchedUsername} maxLength="16" required></input>
-                <input type="submit" onClick={handleSubmit}>Search</input>
+                <input type="text" onChange={handleChange} value={state.username} name="username" maxLength="16" required></input>
+                <input type="submit" onClick={handleSubmit}/>
             </form>
         </div>
     )

@@ -58,7 +58,7 @@ const ComposeForm = () => {
             <form>
                 <label>
                     Title
-                <input onChange={handleChange} value={state.title} type="text" name="title" required minLength="1" maxLength="48" />
+                <input onChange={handleChange} value={state.title} type="text" name="title" minLength="1" maxLength="48" required/>
                 </label>
                 <label>
                     Body
