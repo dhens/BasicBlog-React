@@ -4,8 +4,7 @@
 
 .container {
     display: grid;
-    margin-left: 10%;
-    margin-right: 50%;
+    margin: 0 auto;
 }
 
 form {
@@ -13,4 +12,23 @@ form {
     grid-template-columns: 80px;
     grid-template-rows: auto auto auto auto auto;
     padding: 0;
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+.search-results {
+    padding: 25px;
+    background-color: gray;
+    text-align: left;
+}
+
+.search-results .post-title {
+
+}
+
+.search-results .post-body {
+    
 }

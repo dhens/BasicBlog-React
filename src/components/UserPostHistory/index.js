@@ -3,11 +3,10 @@ import axios from 'axios';
 import './index.css';
 
 const UserPostHistory = () => {
-    // Declare the 3 values of state to be tracked:
-    // the title of the post, the body / content of the post, and the user posting it
+    // Declare the 2 values of state to be tracked
     const [state, setState] = useState({
         username: '',
-        searchedUserResults: []
+        searchedUserResults: [{}]
     });
 
     // When our input form's value changes due to 
@@ -30,32 +29,42 @@ const UserPostHistory = () => {
         axios.get(`http://localhost:8080/api/getUserPostHistory/${state.username}`)
             .then(res => {
                 setState({
-                    searchedUserResults: res.data.posts
+                    searchedUserResults: res.data.posts.reverse()   // reversed to always render newest posts first
                 });
             })
             .catch(err => console.log(err));
     }
 
+    // const deletePost = event => {
+    //     event.preventDefault();
+    //     axios.delete(`localhost:8080/api/deletePost/:id`)
+    // }
+
     return (
-        <div>
+        <div className="container">
             <form>
                 <input type="text" onChange={handleChange} value={state.username} name="username" maxLength="16" required></input>
                 <input type="submit" onClick={handleSubmit} />
-                {state.searchedUserResults.map((post, index) => (
-                    <ul key={index} className="search-results">
-                        <li>
-                            <h4>{post.title}</h4>
-                        </li>
-                        <li>
-                            <h5>{post.body}</h5>
-                        </li>
-                        <li>
-                            <h6>Author: {post.username}</h6>
-                        </li>
-                    </ul>
-
-                ))}
             </form>
+
+            {state.searchedUserResults.map((post, index) => (
+                <ul key={index} className="search-results">
+                    <button className="delete-post">Delete</button>
+                    <li className="post-title">
+                        <div className="title-timestamp">
+                            <h4>{post.title} {post.timestamp}</h4>
+                        </div>
+                    </li>
+                    <li className="post-body">
+                        <h5>{post.body}</h5>
+                    </li>
+                    <li className="post-username">
+                        <h6>Author: {post.username}</h6>
+                    </li>
+                </ul>
+
+            ))}
+
         </div>
     )
 }

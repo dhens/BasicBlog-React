@@ -32,9 +32,11 @@ const ComposeForm = () => {
         const data = {
             title: state.title,
             body: state.body,
-            username: state.username
+            username: state.username,
+            timestamp: postTimestamp(),
+            post_id: getTime()
         }
-        console.log(`Dasta submitted: ${JSON.stringify(data)}`);
+        console.log(`Data submitted: ${JSON.stringify(data)}`);
         event.preventDefault();
         fetch(
             `http://localhost:8080/api/postblog`, {
@@ -51,6 +53,20 @@ const ComposeForm = () => {
             .catch((error) => {
                 console.log(`Error: ${error}`)
             })
+    }
+
+    const getTime = () => {
+        const date = new Date();
+        const milliseconds_id = date.getTime();
+        return milliseconds_id;
+    }
+
+    const postTimestamp = () => {
+        let today = new Date();
+        let date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        let dateTime = time + ' ' + date;
+        return dateTime;
     }
 
     return (

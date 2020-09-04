@@ -24,6 +24,14 @@ const blogUserSchema = new Schema({
             required: true,
             unique: true,
             maxlength: 16    
+        },
+        timestamp: {
+            type: String,
+            required: true
+        },
+        post_id: {
+            type: Number,
+            required: true
         }
     }]
 });
