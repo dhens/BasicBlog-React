@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './index.css';
+import uniqid from 'uniqid';
 
 const ComposeForm = () => {
 
@@ -34,7 +35,7 @@ const ComposeForm = () => {
             body: state.body,
             username: state.username,
             timestamp: postTimestamp(),
-            post_id: getTime()
+            post_id: uniqid.process('post-')
         }
         console.log(`Data submitted: ${JSON.stringify(data)}`);
         event.preventDefault();
@@ -53,12 +54,6 @@ const ComposeForm = () => {
             .catch((error) => {
                 console.log(`Error: ${error}`)
             })
-    }
-
-    const getTime = () => {
-        const date = new Date();
-        const milliseconds_id = date.getTime();
-        return milliseconds_id;
     }
 
     const postTimestamp = () => {

@@ -30,7 +30,7 @@ const blogUserSchema = new Schema({
             required: true
         },
         post_id: {
-            type: Number,
+            type: String,
             required: true
         }
     }]

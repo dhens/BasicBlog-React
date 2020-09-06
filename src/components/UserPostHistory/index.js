@@ -52,7 +52,7 @@ const UserPostHistory = () => {
                     <button className="delete-post">Delete</button>
                     <li className="post-title">
                         <div className="title-timestamp">
-                            <h4>{post.title} {post.timestamp}</h4>
+                            <h4>{post.title} {post.timestamp} {post.post_id}</h4>
                         </div>
                     </li>
                     <li className="post-body">

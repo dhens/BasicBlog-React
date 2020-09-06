@@ -1,5 +1,6 @@
 const blogUser = require('../models');
-const scripts = require('../scripts')
+const scripts = require('../scripts');
+const { newPostLogMessage, postTimestamp } = require('../scripts');
 
 module.exports = {
     // publishPost function: take the data passed from client and inscribe it into our database
@@ -15,9 +16,17 @@ module.exports = {
                         { username: req.username },     // find the entity that matches the existing username
                         { $push: { posts: req } })        // arr.push the new post into the existing posts array for that user
                         .then(postSuccess =>
-                            console.log(`New blog post from user ${req.username} at ${scripts.postTimestamp()}: ${JSON.stringify(postSuccess)}`)
+                            newPostLogMessage(
+                                req.username,
+                                scripts.postTimestamp(),
+                                req.post_id,
+                                JSON.stringify(postSuccess)
+                            )
                         )
-                        .catch(err => console.log(`Error posting ${req.username}'s new post to mongo at ${scripts.postTimestamp()}!: \n${err}\n`));
+                        .catch(err =>
+                            console.log(
+                                `MONGO ERR:${req.username} at ${scripts.postTimestamp()}!: \n${err}\n`)
+                        );
                 } else {
                     new blogUser({
                         username: req.username,
