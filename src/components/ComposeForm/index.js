@@ -69,17 +69,17 @@ const ComposeForm = () => {
             <form>
                 <label>
                     Title
-                <input onChange={handleChange} value={state.title} type="text" name="title" minLength="1" maxLength="48" required/>
+                <input className="title" onChange={handleChange} value={state.title} type="text" name="title" minLength="1" maxLength="48" required/>
                 </label>
                 <label>
                     Body
-                <textarea onChange={handleChange} value={state.body} name="body" required />
+                <textarea className="body" onChange={handleChange} value={state.body} name="body" required />
                 </label>
                 <label>
                     Username
-                <textarea onChange={handleChange} value={state.username} name="username" required />
+                <input className="username" onChange={handleChange} value={state.username} name="username" required />
                 </label>
-                <input onClick={handleSubmit} type="submit" name="submit" value="Submit" />
+                <input className="submit" onClick={handleSubmit} type="submit" name="submit" value="Submit" />
             </form>
         </div>
     )

@@ -14,3 +14,35 @@ form {
     grid-template-rows: auto auto auto auto auto;
     padding: 0;
 }
+
+.title {
+    border: 0;
+    background-color: gray;
+    border-radius: 4px;
+    padding: 15px 5px 15px 5px;
+    font-size: x-large;
+}
+
+.body {
+    resize: none;
+    width: 400px;
+    height: 200px;
+    border: 0;
+    background-color: gray;
+    border-radius: 4px;
+    padding: 15px 5px 15px 5px;
+    font-size: large;
+}
+
+.username {
+    margin-bottom: 15px;
+    border: 0;
+    background-color: gray;
+    border-radius: 4px;
+}
+
+.submit {
+    border: none;
+    border-radius: 8px;
+    background-color: white;
+}
