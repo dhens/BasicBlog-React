@@ -25,10 +25,18 @@ ul {
     text-align: left;
 }
 
-.search-results .post-title {
-
+.search-user {
+    margin-bottom: 15px;
+    border: 0;
+    background-color: gray;
+    border-radius: 4px;
+    padding: 15px 5px 15px 5px;
+    font-size: x-large;
+    width: 200px;
 }
 
-.search-results .post-body {
-    
+.submit-search {
+    width: 200px;
+    height: 25px;
+    border-radius: 8px;    
 }

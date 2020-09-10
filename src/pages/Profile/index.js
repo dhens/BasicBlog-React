@@ -1,15 +1,13 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import UserPostHistory from '../../components/UserPostHistory';
-import UserPostHistoryResults from '../../components/UserPostHistoryResults';
 
 const Profile = () => {
     return (
         <div>
             <Navbar />
-            <h1>profile</h1>
+            <h1>Search User Posts</h1>
             <UserPostHistory />
-            <UserPostHistoryResults />
         </div>
     )
 }

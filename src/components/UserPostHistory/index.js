@@ -43,8 +43,8 @@ const UserPostHistory = () => {
     return (
         <div className="container">
             <form>
-                <input type="text" onChange={handleChange} value={state.username} name="username" maxLength="16" required></input>
-                <input type="submit" onClick={handleSubmit} />
+                <input className="search-user" type="text" onChange={handleChange} value={state.username} name="username" maxLength="16" required />
+                <input className="submit-search" type="submit" onClick={handleSubmit} />
             </form>
 
             {state.searchedUserResults.map((post, index) => (
