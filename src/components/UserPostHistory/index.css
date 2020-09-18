@@ -23,6 +23,7 @@ ul {
     padding: 25px;
     background-color: gray;
     text-align: left;
+    border-radius: 8px;
 }
 
 .search-user {
@@ -40,4 +41,6 @@ ul {
     color: black;
     width: 125px;
     height: 25px;   
+    border-radius: 4px;
+
 }
