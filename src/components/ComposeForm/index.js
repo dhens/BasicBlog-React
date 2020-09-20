@@ -37,7 +37,6 @@ const ComposeForm = () => {
             timestamp: postTimestamp(),
             post_id: uniqid.process('post-')
         }
-        console.log(`Data submitted: ${JSON.stringify(data)}`);
         event.preventDefault();
         fetch(
             `http://localhost:8080/api/postblog`, {
