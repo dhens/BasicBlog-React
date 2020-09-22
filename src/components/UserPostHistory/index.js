@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './index.css';
+import DeletePostButton from '../DeletePostButton'
 
 const UserPostHistory = () => {
     // Declare the 2 values of state to be tracked
@@ -49,10 +50,10 @@ const UserPostHistory = () => {
 
             {state.searchedUserResults.map((post, index) => (
                 <ul key={index} className="search-results">
-                    <button className="delete-post">Delete</button>
                     <li className="post-title">
                         <div className="title-timestamp">
-                            <h4>{post.title} {post.timestamp} {post.post_id}</h4>
+                            <h1>{post.title}</h1>
+                            <p>{post.timestamp} {post.post_id}</p>
                         </div>
                     </li>
                     <li className="post-body">
@@ -61,10 +62,9 @@ const UserPostHistory = () => {
                     <li className="post-username">
                         <h6>Author: {post.username}</h6>
                     </li>
+                    <DeletePostButton />
                 </ul>
-
             ))}
-
         </div>
     )
 }

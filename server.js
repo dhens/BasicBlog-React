@@ -37,6 +37,10 @@ mongoose.connect(process.env.MONGODB_URI, {     // Connect to the Mongo DB local
     postController.publishPost(req.body);
 })
 
+app.delete('/api/delete/:id', (req, res) => {
+  
+})
+
 app.get('/api/getUserPostHistory/:username', (req, res) => {
   const callback = (status, message) => {
     res.status = status

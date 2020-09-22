@@ -44,3 +44,9 @@ ul {
     border-radius: 4px;
 
 }
+
+.title-timestamp {
+    display: grid;
+    grid-auto-columns: auto auto;
+    row-gap: 50px;
+}
