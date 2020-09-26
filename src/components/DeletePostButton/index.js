@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import './index.css'
 
-const DeletePostButton = () => {
-
-    const [state, setState] = useState({
-        postId: ''
-    });
+const DeletePostButton = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault();
-        axios.delete(`http://localhost:8080/api/getUserPostHistory/${state.username}`)
+        alert('deleting post ' + props.postId)
+        axios.delete(`http://localhost:8080/api/deletePost/${props.postId}`)
             .then(res => {
-                setState({
-                    searchedUserResults: res.data.posts.reverse()   // reversed to always render newest posts first
-                });
+                console.log(res)
             })
             .catch(err => console.log(err));
     }
 
     return (
-        <input className="submit-search" type="submit" onClick={handleSubmit} />
+        <button className="delete-post" type="submit" onClick={handleSubmit}>Delete Post</button>
     )
 }
 

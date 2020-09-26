@@ -53,7 +53,8 @@ const UserPostHistory = () => {
                     <li className="post-title">
                         <div className="title-timestamp">
                             <h1>{post.title}</h1>
-                            <p>{post.timestamp} {post.post_id}</p>
+                            <p>{post.timestamp}</p>
+                            <p id="post-id">{post.post_id}</p>
                         </div>
                     </li>
                     <li className="post-body">
@@ -62,7 +63,12 @@ const UserPostHistory = () => {
                     <li className="post-username">
                         <h6>Author: {post.username}</h6>
                     </li>
-                    <DeletePostButton />
+                    <DeletePostButton
+                        postId={post.post_id}
+                    />
+
+
+
                 </ul>
             ))}
         </div>

@@ -42,19 +42,26 @@ app.post('/api/postblog', (req, res) => {
 
 // DELETE ROUTES
 app.delete('/api/deletePost/:postId', (req, res) => {
-  res.send(req.params.postId);
-});
-
-// GET ROUTES
-app.get('/api/getUserPostHistory/:username', (req, res) => {
+  // function to save status code and then send it back to client
   const callback = (status, message) => {
     res.status = status
     res.send(message);
   }
+
   userQueryController
-    .grabPostHistory(
-      req.params.username, callback
-    )
+    .deletePost(req.params.postId, callback)
+});
+
+// GET ROUTES
+app.get('/api/getUserPostHistory/:username', (req, res) => {
+  // function to save status code and then send it back to client
+  const callback = (status, message) => {
+    res.status = status
+    res.send(message);
+  }
+
+  userQueryController
+    .grabPostHistory(req.params.username, callback)
 });
 
 app.get('/', (req, res) => {
