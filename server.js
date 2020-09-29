@@ -33,7 +33,6 @@ mongoose.connect(process.env.MONGODB_URI, {     // Connect to the Mongo DB local
   useCreateIndex: true
 });
 
-// API ROUTES
 
 // POST ROUTES
 app.post('/api/postblog', (req, res) => {
@@ -47,7 +46,6 @@ app.delete('/api/deletePost/:postId', (req, res) => {
     res.status = status
     res.send(message);
   }
-
   userQueryController
     .deletePost(req.params.postId, callback)
 });
@@ -59,7 +57,6 @@ app.get('/api/getUserPostHistory/:username', (req, res) => {
     res.status = status
     res.send(message);
   }
-
   userQueryController
     .grabPostHistory(req.params.username, callback)
 });

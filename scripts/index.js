@@ -8,7 +8,7 @@ module.exports = {
     },
     newPostLogMessage: (username, time, post_id, serverResponse) => {
         return console.log(
-        `New blog post: 
+            `New blog post: 
         \ruser: ${username} 
         \rtime: ${time} 
         \rpost_id: ${post_id} 

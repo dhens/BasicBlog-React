@@ -21,7 +21,7 @@ ul {
 
 .search-results {
     padding: 25px;
-    background-color: gray;
+    background-color:  rgb(83, 83, 83);
     text-align: left;
     border-radius: 8px;
 }
@@ -29,7 +29,7 @@ ul {
 .search-user {
     margin-bottom: 15px;
     border: 0;
-    background-color: gray;
+    background-color: rgb(83, 83, 83);
     border-radius: 4px;
     padding: 15px 5px 15px 5px;
     font-size: x-large;
